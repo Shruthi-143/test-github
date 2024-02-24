@@ -1,0 +1,26 @@
+name: Push pop status to Alerta configmap
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  push-status-to-alerta:
+    runs-on: [self-hosted, linux, general]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Convert yaml to json
+        run: yaml2json status.yml > popstatus.json
+        shell: bash 
+
+      - name: Run kubectl to update Alerta popstatus configmap
+        run: kubectl create configmap popstatus --from-file=./popstatus.json -n alerta --dry-run=client -o yaml | kubectl apply -f -
+        shell: bash
+
+      - name: Run kubectl to update Alerta Staging configmap
+        run: kubectl create configmap popstatus --from-file=./popstatus.json -n alerta-staging --dry-run=client -o yaml | kubectl apply -f -
+        shell: bash
