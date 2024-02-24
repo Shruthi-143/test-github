@@ -1,0 +1,19 @@
+name: Testing
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  pst-gti-artemis:
+    runs-on: [self-hosted, linux, general]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3   
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.11
+    - name: Install dependencies
