@@ -7,14 +7,16 @@ jobs:
   build:
     runs-on: ubuntu-latest  # Replace with your preferred runner
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        run: |
-          set -e
-          if ! git diff --quiet HEAD master; then
-              echo "Changes detected, continue pipeline."
-          else
-              echo "No changes found, skipping pipeline."
-              exit 2  # Set exit code to signal no changes (optional)
-          fi
+     - uses: actions/github-script@v7
+       id: my-script
+       with:
+        script: |
+            if (currentBuild.changeSets.size() > 0) {
+            echo "There are changes, so continue"
+               } else {
+            echo "No changes, stop the build"
+            currentBuild.result = "NOT_BUILT"
+            currentBuild.displayName = "#${BUILD_NUMBER} No Changes"
+            error "Skipping Build"
+              }
+              echo "Building Stuff"
