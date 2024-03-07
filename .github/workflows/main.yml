@@ -11,12 +11,12 @@ jobs:
        id: my-script
        with:
         script: |
-            if (currentBuild.changeSets.size() > 0) {
+          if (currentBuild.changeSets.size() > 0) {
             echo "There are changes, so continue"
-               } else {
-            echo "No changes, stop the build"
-            currentBuild.result = "NOT_BUILT"
-            currentBuild.displayName = "#${BUILD_NUMBER} No Changes"
-            error "Skipping Build"
+            } else {
+              echo "No changes, stop the build"
+              currentBuild.result = "NOT_BUILT"
+              currentBuild.displayName = "#${BUILD_NUMBER} No Changes"
+              error "Skipping Build"
             }
               echo "Building Stuff"
