@@ -19,4 +19,4 @@ jobs:
               currentBuild.displayName = "#${BUILD_NUMBER} No Changes"
               error "Skipping Build"
             }
-              echo "Building Stuff"
+             echo "Building Stuff"
