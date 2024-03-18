@@ -2,11 +2,11 @@ name: Main Workflow
 
 on:
   workflow_run:
-  workflow: ["main"]
+  fork: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Another Workflow
-        run: | echo "sumit"
+        run:  echo "sumit"
