@@ -2,7 +2,9 @@ name: Main Workflow
 
 on:
   workflow_run:
-  fork: ["main"]
+    workflows: [Run Tests]
+    types:
+      - completed
 
 jobs:
   build:
