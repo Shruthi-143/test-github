@@ -2,8 +2,7 @@ name: Main Workflow
 
 on:
   workflow_run:
-  workflow: ["Foo"]
-    types: [completed] 
+  workflow: ["main"]
 
 jobs:
   build:
