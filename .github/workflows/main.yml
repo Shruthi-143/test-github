@@ -2,11 +2,11 @@ name: Trigger Workflow
 
 on:
   repository_dispatch:
-    types: [trigger-workflow]
+    #types: [trigger-workflow]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Workflow
-        run: echo "Triggering another workflow"
+      - name: Second file
+        uses : ./.github/workflows/test/yml
