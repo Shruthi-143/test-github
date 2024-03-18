@@ -1,10 +1,9 @@
 name: Main Workflow
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:    
+  workflow_run:
+  workflow: ["Foo"]
+    types: [completed] 
 
 jobs:
   build:
