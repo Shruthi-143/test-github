@@ -10,9 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Another Workflow
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.MY_PAT }}
-          repository: ${{ github.repository }}
-          event-type: trigger-workflow
-          client-payload: '{"key": "value"}'
+        run: | echo "sumit"
